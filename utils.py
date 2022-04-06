@@ -1,5 +1,6 @@
 import json
 import os
+from typing import Set
 import pandas as pd
 
 
@@ -17,3 +18,8 @@ def load_data(path):
                 if not obj is None:
                     map_lst.append(obj)
     return pd.DataFrame(map_lst)
+
+def jaccard_similarity(a: Set, b: Set):
+    # calucate jaccard similarity
+    intersectionLen = len(a.intersection(b))
+    return float(intersectionLen) / float(len(a) + len(b) - intersectionLen)
